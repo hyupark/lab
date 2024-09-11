@@ -1,0 +1,16 @@
+#Add the configuration to network.operator
+$ oc edit network.operator.openshift.io cluster
+spec:
+  additionalNetworks:
+    - name: whereabouts-shim
+      namespace: default
+      rawCNIConfig: |-
+        {
+          "name": "whereabouts-shim",
+          "cniVersion": "0.3.1",
+          "type": "bridge",
+          "ipam": {
+            "type": "whereabouts"
+          }
+        }
+      type: Raw

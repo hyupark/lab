@@ -1,0 +1,11 @@
+$ oc patch deploy/pod-a -n multus-test --patch '{
+  "spec": {
+    "template": {
+      "metadata": {
+        "annotations": {
+           "k8s.v1.cni.cncf.io/networks": "bridge-main"
+       }
+      }
+    }
+  }
+}'
